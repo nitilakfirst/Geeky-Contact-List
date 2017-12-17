@@ -59,4 +59,10 @@ app.get('/contacts/:id',(req,res)=>{
         console.log("notfound")
     }
 })
+//post-58160079
+app.post('/contacts',(req,res)=>{
+    contactList.push(req.body)//post
+    res.status(201).json(req.body)
+    console.log("PostSuccess")
+})
 module.exports= app
