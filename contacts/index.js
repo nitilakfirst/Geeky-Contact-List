@@ -65,4 +65,23 @@ app.post('/contacts',(req,res)=>{
     res.status(201).json(req.body)
     console.log("PostSuccess")
 })
+//put-58160039
+app.put('/contacts/:id',(req,res)=>{
+    let updateId
+    let found=0
+    for(let i=0;i<contactList.length;i++){
+        if(req.params.id==contactList[i].id){
+            updateId=i
+            found++
+        }
+    }
+    if(found>0){
+        res.json(Object.assign(contactList[updateId],req.body))//put
+        console.log("PutSuccess")
+    }
+    else{
+        res.json("notfoundId")
+        console.log("notfoundId")
+    }
+})
 module.exports= app
