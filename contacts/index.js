@@ -84,4 +84,24 @@ app.put('/contacts/:id',(req,res)=>{
         console.log("notfoundId")
     }
 })
+//delete-58160206
+app.delete('/contacts/:id',(req,res)=>{
+    let deleteId
+    let found=0
+    for(let i=0;i<contactList.length;i++){
+        if(req.params.id==contactList[i].id){
+            deleteId=contactList[i]
+            found++
+        }
+    }
+    if(found>0){
+        contactList.splice(deleteId.id,1)//delete
+        res.status(204).send()
+        console.log("DeleteSuccess")
+    }
+    else{
+        res.json("notfoundId")
+        console.log("notfoundId")
+    }
+})
 module.exports= app
